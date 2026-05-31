@@ -4,15 +4,9 @@ matplotlib
 seaborn
 scikit-learn
 xgboost
-lightgbm
-fastapi
-uvicorn
 streamlit
 jupyter
 notebook
 ipykernel
 python-dotenv
 joblib
-requests
-httpx
-python-multipart
