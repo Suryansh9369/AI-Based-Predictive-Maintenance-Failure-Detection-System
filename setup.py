@@ -24,6 +24,6 @@ version='0.1.0',
 author='Suryansh',
 author_email='suryanshv16@gmail.com',
 packages=find_packages(),
-install_requires=get_requirements('reuirements.txt')
+install_requires=get_requirements('requirements.txt')
 
 )

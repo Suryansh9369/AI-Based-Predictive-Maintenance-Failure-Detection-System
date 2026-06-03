@@ -10,4 +10,3 @@ notebook
 ipykernel
 python-dotenv
 joblib
--e .
