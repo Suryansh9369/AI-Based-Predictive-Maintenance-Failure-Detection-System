@@ -1,7 +1,0 @@
-setup.py
-AI_Based_Predictive_Maintenance_Failure_Detection_System.egg-info/PKG-INFO
-AI_Based_Predictive_Maintenance_Failure_Detection_System.egg-info/SOURCES.txt
-AI_Based_Predictive_Maintenance_Failure_Detection_System.egg-info/dependency_links.txt
-AI_Based_Predictive_Maintenance_Failure_Detection_System.egg-info/requires.txt
-AI_Based_Predictive_Maintenance_Failure_Detection_System.egg-info/top_level.txt
-src/__init__.py
