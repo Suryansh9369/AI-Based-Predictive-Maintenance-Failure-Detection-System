@@ -19,7 +19,7 @@ class DataTransformationConfig:
     
 class DataTransformation:
     def __init__(self):
-        self.data_transformation_config=DataTransformation()
+        self.data_transformation_config=DataTransformationConfig()
         
     def get_transformer_object(self):
         '''
@@ -47,7 +47,10 @@ class DataTransformation:
                 steps=[
                     ("imputer", SimpleImputer(strategy='most_frequent')),
                     ("one_hot_encoding", OneHotEncoder()),
-                    ("scaler", StandardScaler())
+                    ("scaler", StandardScaler(with_mean=False))
+                    # Onehotencoding create a sparse matrix then standardscaler (with_mean=True) tries to center it.
+                    # Sparse matrix cannot be centered
+                    
                 ]
             )
             
@@ -79,10 +82,10 @@ class DataTransformation:
             
             target_column_name="Machine failure"
             
-            input_feature_train_df=train_df.drop(columns=[target_column_name],axis=1)
+            input_feature_train_df=train_df.drop(columns=[target_column_name])
             target_feature_train_df=train_df[target_column_name]
             
-            input_feature_test_df=test_df.drop(columns=[target_column_name], axis=1)
+            input_feature_test_df=test_df.drop(columns=[target_column_name])
             target_feature_test_df=test_df[target_column_name]
             
             logging.info(
@@ -90,7 +93,7 @@ class DataTransformation:
             )
             
             input_feature_train_arr=preprocessing_obj.fit_transform(input_feature_train_df)
-            input_feature_test_arr=preprocessing_obj.fit_transform(input_feature_test_df)
+            input_feature_test_arr=preprocessing_obj.transform(input_feature_test_df) #test data should not be fitted otherwise leads to data leakage.
             
             train_arr=np.c_[
                 input_feature_train_arr, np.array(target_feature_train_df)
@@ -102,14 +105,14 @@ class DataTransformation:
             logging.info("Saved preprocessing object.")
             
             save_object(
-                file_path=self.data_transformation_config.preprocessor_obj_file_path,
+                file_path=self.data_transformation_config.preprocessor_ob_file_path,
                 obj=preprocessing_obj
             )
             
             return(
                 train_arr,
                 test_arr,
-                self.data_transformation_config.preprocessor_obj_file_path
+                self.data_transformation_config.preprocessor_ob_file_path
             )
         except Exception as e:
             raise customException(e,sys)
