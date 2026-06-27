@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import pickle
 
-from sklearn.metrics import recall_score
+from sklearn.metrics import average_precision_score
 from sklearn.model_selection import GridSearchCV
 
 from src.exception import customException
@@ -41,8 +41,19 @@ def evaluate_models(X_train, y_train, X_test, y_test, models, param):
             y_train_pred = model.predict(X_train)
             y_test_pred = model.predict(X_test)
             
-            train_model_score=recall_score(y_train, y_train_pred)
-            test_model_score=recall_score(y_test, y_test_pred)
+            if hasattr(model, "predict_proba"):
+                y_train_pred_proba = model.predict_proba(X_train)[:,1]
+                y_test_pred_proba = model.predict_proba(X_test)[:,1]
+            elif hasattr(model, "decision_function"):
+                y_train_pred_proba = model.decision_function(X_train)
+                y_test_pred_proba = model.decision_function(X_test)
+            else:
+                continue
+            
+            
+            
+            train_model_score=average_precision_score(y_train, y_train_pred_proba)
+            test_model_score=average_precision_score(y_test, y_test_pred_proba)
             
             report[list(models.keys())[i]]=test_model_score
             
