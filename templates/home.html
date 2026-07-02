@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictive Maintenance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Predictive Maintenance</h1>
+
+    <form action="/predict" method="POST">
+
+        <label>Air Temperature (K)</label>
+        <input type="number" step="0.01" name="air_temperature" required>
+
+        <label>Process Temperature (K)</label>
+        <input type="number" step="0.01" name="process_temperature" required>
+
+        <label>Rotational Speed (RPM)</label>
+        <input type="number" name="rotational_speed" required>
+
+        <label>Torque (Nm)</label>
+        <input type="number" step="0.01" name="torque" required>
+
+        <label>Tool Wear (min)</label>
+        <input type="number" name="tool_wear" required>
+
+        <button type="submit">Predict</button>
+
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        <h2>{{ prediction }}</h2>
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
