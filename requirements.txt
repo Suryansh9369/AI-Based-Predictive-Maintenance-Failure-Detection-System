@@ -10,4 +10,6 @@ notebook
 ipykernel
 python-dotenv
 joblib
+pickle
+Flask
 -e .
