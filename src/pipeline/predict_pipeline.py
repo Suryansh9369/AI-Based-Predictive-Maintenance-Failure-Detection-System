@@ -11,3 +11,4 @@ class PredictPipeline:
 class CustomData:
     def __init__(self):
         pass
+    
