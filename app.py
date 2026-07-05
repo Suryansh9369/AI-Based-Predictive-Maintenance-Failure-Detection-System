@@ -1,26 +1,42 @@
-from flask import Flask, render_template, request
+from flask import Flask, request,render_template
+import numpy as np
+import pandas as pd
 
-app = Flask(__name__)
+from sklearn.preprocessing import StandardScaler
 
-@app.route("/")
-def home():
-    return render_template("home.html")
+from src.pipeline.predict_pipeline import CustomData, PredictPipeline
 
+application=Flask(__name__)
 
-@app.route("/predict", methods=["POST"])
-def predict():
-    # Get values from the form
-    air_temp = float(request.form["air_temperature"])
-    process_temp = float(request.form["process_temperature"])
-    rotational_speed = float(request.form["rotational_speed"])
-    torque = float(request.form["torque"])
-    tool_wear = float(request.form["tool_wear"])
+app=application
 
-    # Temporary prediction
-    prediction = "Machine is Healthy"
+##Route for a home page
 
-    return render_template("home.html", prediction=prediction)
+@app.route('/')
+def index():
+    return render_template('index.html')
 
+@app.route('/predictdata', methods=['GET', 'POST'])
+def predict_datapoint():
+    if request.method=='GET':
+        return render_template('home.html')
+    else:
+        data=CustomData(
+            type=str(request.form.get('type')),
+            air_temperature_k=float(request.form.get('air_temperature')),
+            process_temperature_k=float(request.form.get('process_temperature')),
+            rotational_speed_rpm=float(request.form.get('rotational_speed')),
+            torque_nm=float(request.form.get('torque')),
+            tool_wear_min=float(request.form.get('tool_wear'))
 
-if __name__ == "__main__":
-    app.run(debug=True)
+        )
+        
+        pred_df=data.get_data_as_data_frame()
+        print(pred_df)
+        
+        predict_pipeline=PredictPipeline()
+        results=predict_pipeline.predict(pred_df)
+        return render_template('home.html', results=results[0])
+
+if __name__=="__main__":
+    app.run(host="0.0.0.0", debug=True)
