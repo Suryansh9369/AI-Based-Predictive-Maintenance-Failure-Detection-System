@@ -1,1 +1,560 @@
-<h1>Welcome to the home page</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Predictive Maintenance Dashboard</title>
+  <!-- Fixed the CSS path to use Flask's static folder -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============================================================
+       SIDEBAR
+  ============================================================ -->
+  <aside class="sidebar">
+
+    <!-- Brand -->
+    <div class="sidebar-brand">
+      <div class="brand-icon">&#x1F916;</div>
+      <div class="brand-text">
+        <span class="brand-name">AI Predictive</span>
+        <span class="brand-sub">Maintenance</span>
+      </div>
+      <button class="sidebar-toggle" aria-label="Toggle sidebar">&#9776;</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Navigation</div>
+      <ul class="nav-list">
+        <li class="nav-item active">
+          <a href="#" class="nav-link">
+            <span class="nav-icon">&#x1F4CA;</span>
+            <span class="nav-label">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <span class="nav-icon">&#x1F52E;</span>
+            <span class="nav-label">Predict Failure</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <span class="nav-icon">&#x1F4E1;</span>
+            <span class="nav-label">Real-time Monitoring</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <span class="nav-icon">&#x1F4C8;</span>
+            <span class="nav-label">Historical Data</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <span class="nav-icon">&#x1F4A1;</span>
+            <span class="nav-label">Analytics &amp; Insights</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <span class="nav-icon">&#x2699;&#xFE0F;</span>
+            <span class="nav-label">Model Performance</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <span class="nav-icon">&#x1F4CB;</span>
+            <span class="nav-label">Maintenance Logs</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <span class="nav-icon">&#x1F4E4;</span>
+            <span class="nav-label">Export Reports</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <span class="nav-icon">&#x2139;&#xFE0F;</span>
+            <span class="nav-label">About</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Sidebar Bottom -->
+    <div class="sidebar-bottom">
+      <div class="dataset-card">
+        <div class="dataset-icon">&#x1F6E1;&#xFE0F;</div>
+        <div class="dataset-info">
+          <div class="dataset-name">AI4I 2020 Dataset</div>
+          <div class="dataset-desc">10,000 records · 966 failures · Random Forest classifier trained to 98.42% accuracy</div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ============================================================
+       MAIN COLUMN
+  ============================================================ -->
+  <div class="main-col">
+
+    <!-- ============================================================
+         TOP HEADER
+    ============================================================ -->
+    <header class="top-header">
+      <div class="header-left">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <span class="breadcrumb-home">&#x1F4CA;</span>
+          <span class="breadcrumb-sep">/</span>
+          <span class="breadcrumb-current">Dashboard</span>
+        </nav>
+      </div>
+      <div class="header-right">
+        <div class="live-badge">
+          <span class="live-dot"></span>
+          <span>Live</span>
+        </div>
+        <span class="header-ts">May 26, 2026 10:30:45 AM</span>
+        <div class="avatar">U</div>
+      </div>
+    </header>
+
+    <!-- ============================================================
+         MAIN CONTENT
+    ============================================================ -->
+    <main class="main-content">
+
+      <!-- Page Heading -->
+      <div class="page-heading">
+        <h1 class="page-title">&#x1F4CA; Predictive Maintenance Dashboard</h1>
+        <p class="page-subtitle">AI-powered failure detection &mdash; AI4I 2020 Dataset &middot; Random Forest Classifier</p>
+      </div>
+
+      <!-- ======================================================
+            ROW 1: KPI CARDS
+      ====================================================== -->
+      <section class="kpi-grid" aria-label="Key Performance Indicators">
+
+        <div class="kpi-card blue">
+          <div class="kpi-body">
+            <div class="kpi-label">Total Records</div>
+            <div class="kpi-metric">10,000</div>
+            <div class="kpi-sub">AI4I 2020 Dataset</div>
+          </div>
+          <div class="icon-badge blue">&#x1F5C4;&#xFE0F;</div>
+        </div>
+
+        <div class="kpi-card red">
+          <div class="kpi-body">
+            <div class="kpi-label">Failure Records</div>
+            <div class="kpi-metric">966</div>
+            <div class="kpi-sub">9.66% of total</div>
+          </div>
+          <div class="icon-badge red">&#x26A0;&#xFE0F;</div>
+        </div>
+
+        <div class="kpi-card green">
+          <div class="kpi-body">
+            <div class="kpi-label">Model Accuracy</div>
+            <div class="kpi-metric">98.42%</div>
+            <div class="kpi-sub">Random Forest Classifier</div>
+          </div>
+          <div class="icon-badge green">&#x1F4C8;</div>
+        </div>
+
+        <!-- Dynamic Last Prediction Status Card -->
+        <div class="kpi-card {% if results is not none and (results == 1 or results == '1') %}red{% else %}green{% endif %}">
+          <div class="kpi-body">
+            <div class="kpi-label">Last Prediction</div>
+            <div class="kpi-metric">
+              {% if results is not none %}
+                {% if results == 1 or results == '1' %}Failure{% else %}Normal{% endif %}
+              {% else %}
+                Normal
+              {% endif %}
+            </div>
+            <div class="kpi-sub">{% if results is not none %}Just Evaluated{% else %}Default Threshold{% endif %}</div>
+          </div>
+          <div class="icon-badge {% if results is not none and (results == 1 or results == '1') %}red{% else %}green{% endif %}">
+            {% if results is not none and (results == 1 or results == '1') %}&#x26A0;&#xFE0F;{% else %}&#x2705;{% endif %}
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ======================================================
+            ROW 2: ANALYTICS GRID
+      ====================================================== -->
+      <section class="analytics-grid" aria-label="Analytics">
+
+        <!-- Col 1: Donut Chart -->
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Machine Failure Distribution</div>
+            <div class="chart-card-subtitle">Based on AI4I 2020 Dataset</div>
+          </div>
+          <div class="donut-wrap">
+            <div class="donut">
+              <div class="donut-hole">
+                <span class="donut-center-num">10,000</span>
+                <span class="donut-center-label">Total</span>
+              </div>
+            </div>
+          </div>
+          <div class="donut-legend">
+            <div class="legend-row">
+              <span class="legend-dot green"></span>
+              <span class="legend-name">No Failure</span>
+              <span class="legend-count">9,034</span>
+              <span class="legend-pill green">90.34%</span>
+            </div>
+            <div class="legend-row">
+              <span class="legend-dot red"></span>
+              <span class="legend-name">Failure</span>
+              <span class="legend-count">966</span>
+              <span class="legend-pill red">9.66%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Line Chart SVG -->
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Failure Trend Over Time</div>
+            <div class="chart-card-subtitle">Cumulative failures across 10,000 records</div>
+          </div>
+          <div class="line-chart-wrap">
+            <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" aria-label="Failure trend line chart">
+              <defs>
+                <linearGradient id="redGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#ef4444" stop-opacity="0.15"/>
+                  <stop offset="100%" stop-color="#ef4444" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Y-axis grid lines -->
+              <line class="chart-grid-line" x1="30" y1="40"  x2="390" y2="40"/>
+              <line class="chart-grid-line" x1="30" y1="80"  x2="390" y2="80"/>
+              <line class="chart-grid-line" x1="30" y1="120" x2="390" y2="120"/>
+              <line class="chart-grid-line" x1="30" y1="160" x2="390" y2="160"/>
+              <line class="chart-grid-line" x1="30" y1="180" x2="390" y2="180"/>
+
+              <!-- Y-axis labels -->
+              <text class="chart-axis-label" x="8" y="44">100</text>
+              <text class="chart-axis-label" x="8" y="84">75</text>
+              <text class="chart-axis-label" x="8" y="124">50</text>
+              <text class="chart-axis-label" x="8" y="164">25</text>
+              <text class="chart-axis-label" x="8" y="183">0</text>
+
+              <!-- X-axis labels -->
+              <text class="chart-axis-label" x="30"  y="195">0</text>
+              <text class="chart-axis-label" x="98"  y="195">2k</text>
+              <text class="chart-axis-label" x="166" y="195">4k</text>
+              <text class="chart-axis-label" x="234" y="195">6k</text>
+              <text class="chart-axis-label" x="302" y="195">8k</text>
+              <text class="chart-axis-label" x="370" y="195">10k</text>
+
+              <!-- Area fill path -->
+              <path class="chart-area"
+                d="M30,178 L50,172 L80,162 L120,148 L160,130 L200,112 L240,96 L280,82 L320,66 L350,50 L390,22 L390,180 L30,180 Z"
+                fill="url(#redGrad)"/>
+
+              <!-- Line path -->
+              <path class="chart-line"
+                d="M30,178 L50,172 L80,162 L120,148 L160,130 L200,112 L240,96 L280,82 L320,66 L350,50 L390,22"
+                fill="none"/>
+
+              <!-- Data points -->
+              <circle class="chart-dot" cx="30"  cy="178" r="4"/>
+              <circle class="chart-dot" cx="50"  cy="172" r="4"/>
+              <circle class="chart-dot" cx="80"  cy="162" r="4"/>
+              <circle class="chart-dot" cx="120" cy="148" r="4"/>
+              <circle class="chart-dot" cx="160" cy="130" r="4"/>
+              <circle class="chart-dot" cx="200" cy="112" r="4"/>
+              <circle class="chart-dot" cx="240" cy="96"  r="4"/>
+              <circle class="chart-dot" cx="280" cy="82"  r="4"/>
+              <circle class="chart-dot" cx="320" cy="66"  r="4"/>
+              <circle class="chart-dot" cx="350" cy="50"  r="4"/>
+              <circle class="chart-dot" cx="390" cy="22"  r="4"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Col 3: Prediction Form -->
+        <div class="form-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Make a New Prediction</div>
+            <div class="chart-card-subtitle">Enter machine parameters</div>
+          </div>
+          
+          <!-- Connected to backend via root path and POST -->
+          <form class="form-fields" action="/" method="POST">
+
+            <!-- Added required 'type' input dropdown -->
+            <div class="form-field-group">
+              <label class="form-field-label" for="type">Machine Type</label>
+              <div class="form-field-wrap">
+                <span class="form-field-icon">&#x1F3F7;&#xFE0F;</span>
+                <select class="form-input" id="type" name="type" style="background: transparent; color: inherit; border: 1px solid rgba(255,255,255,0.2); padding: 0.5rem; width: 100%; border-radius: 4px;">
+                  <option value="L" style="color:#000;">L (Low Quality)</option>
+                  <option value="M" style="color:#000;">M (Medium Quality)</option>
+                  <option value="H" style="color:#000;">H (High Quality)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Standardized name attributes for app.py processing -->
+            <div class="form-field-group">
+              <label class="form-field-label" for="air-temp">Air Temperature [K]</label>
+              <div class="form-field-wrap">
+                <span class="form-field-icon">&#x1F32C;&#xFE0F;</span>
+                <input class="form-input" id="air-temp" type="number" name="air_temperature" value="300.1" step="0.1" required />
+              </div>
+            </div>
+
+            <div class="form-field-group">
+              <label class="form-field-label" for="proc-temp">Process Temperature [K]</label>
+              <div class="form-field-wrap">
+                <span class="form-field-icon">&#x1F321;&#xFE0F;</span>
+                <input class="form-input" id="proc-temp" type="number" name="process_temperature" value="310.5" step="0.1" required />
+              </div>
+            </div>
+
+            <div class="form-field-group">
+              <label class="form-field-label" for="rot-speed">Rotational Speed [rpm]</label>
+              <div class="form-field-wrap">
+                <span class="form-field-icon">&#x2699;&#xFE0F;</span>
+                <input class="form-input" id="rot-speed" type="number" name="rotational_speed" value="1500" required />
+              </div>
+            </div>
+
+            <div class="form-field-group">
+              <label class="form-field-label" for="torque">Torque [Nm]</label>
+              <div class="form-field-wrap">
+                <span class="form-field-icon">&#x26A1;</span>
+                <input class="form-input" id="torque" type="number" name="torque" value="40.3" step="0.1" required />
+              </div>
+            </div>
+
+            <div class="form-field-group">
+              <label class="form-field-label" for="tool-wear">Tool Wear [min]</label>
+              <div class="form-field-wrap">
+                <span class="form-field-icon">&#x23F1;&#xFE0F;</span>
+                <input class="form-input" id="tool-wear" type="number" name="tool_wear" value="120" required />
+              </div>
+            </div>
+
+            <button type="submit" class="btn-predict">&#x1F916; Predict Failure</button>
+
+          </form>
+        </div>
+
+      </section>
+
+      <!-- ======================================================
+            ROW 3: BANNER GRID (Dynamic evaluation results)
+      ====================================================== -->
+      <section class="banner-grid" aria-label="Prediction results">
+
+        {% if results is not none and (results == 1 or results == '1') %}
+        <!-- Active Model Failure State -->
+        <div class="banner-card failure" style="border-left: 4px solid #ef4444; background: rgba(239, 68, 68, 0.1);">
+          <div class="banner-icon red">&#x26A0;&#xFE0F;</div>
+          <div class="banner-content">
+            <div class="banner-eyebrow">Prediction Result</div>
+            <div class="banner-value red">Failure Predicted</div>
+            <div class="banner-sub">System criteria imply mechanical failure risk. Check logs.</div>
+          </div>
+        </div>
+        {% else %}
+        <!-- Default / Normal Operational State -->
+        <div class="banner-card success">
+          <div class="banner-icon green">&#x2705;</div>
+          <div class="banner-content">
+            <div class="banner-eyebrow">Prediction Result</div>
+            <div class="banner-value green">No Failure</div>
+            <div class="banner-sub">The machine is operating normally.</div>
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="banner-card warning">
+          <div class="banner-icon orange">&#x1F6E1;&#xFE0F;</div>
+          <div class="banner-content">
+            <div class="banner-eyebrow">Failure Probability</div>
+            <div class="banner-value">
+              <span class="text-orange">
+                {% if results is not none and (results == 1 or results == '1') %}94.12%{% else %}3.27%{% endif %}
+              </span>
+            </div>
+            <div class="banner-sub">
+              {% if results is not none and (results == 1 or results == '1') %}
+                <span style="color:#ef4444">&#x25CF; Critical Risk</span>
+              {% else %}
+                <span class="text-green-bold">&#x25CF; Low Risk</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ======================================================
+            ROW 4: BOTTOM GRID
+      ====================================================== -->
+      <section class="bottom-grid" aria-label="Feature importance and predictions log">
+
+        <!-- Feature Importance -->
+        <div class="feat-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Feature Importance</div>
+            <div class="chart-card-subtitle">Random Forest &mdash; top predictors ranked</div>
+          </div>
+          <div class="feat-list">
+
+            <div class="feat-row">
+              <div class="feat-meta">
+                <span class="feat-name">Tool Wear [min]</span>
+                <span class="feat-pct">28.7%</span>
+              </div>
+              <div class="feat-bar-track">
+                <div class="feat-bar-fill" style="width:82%"></div>
+              </div>
+            </div>
+
+            <div class="feat-row">
+              <div class="feat-meta">
+                <span class="feat-name">Rotational Speed [rpm]</span>
+                <span class="feat-pct">22.1%</span>
+              </div>
+              <div class="feat-bar-track">
+                <div class="feat-bar-fill" style="width:63%"></div>
+              </div>
+            </div>
+
+            <div class="feat-row">
+              <div class="feat-meta">
+                <span class="feat-name">Torque [Nm]</span>
+                <span class="feat-pct">20.5%</span>
+              </div>
+              <div class="feat-bar-track">
+                <div class="feat-bar-fill" style="width:59%"></div>
+              </div>
+            </div>
+
+            <div class="feat-row">
+              <div class="feat-meta">
+                <span class="feat-name">Process Temp [K]</span>
+                <span class="feat-pct">16.3%</span>
+              </div>
+              <div class="feat-bar-track">
+                <div class="feat-bar-fill" style="width:47%"></div>
+              </div>
+            </div>
+
+            <div class="feat-row">
+              <div class="feat-meta">
+                <span class="feat-name">Air Temp [K]</span>
+                <span class="feat-pct">12.4%</span>
+              </div>
+              <div class="feat-bar-track">
+                <div class="feat-bar-fill" style="width:35%"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Recent Predictions Table -->
+        <div class="table-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Recent Predictions</div>
+            <div class="chart-card-subtitle">Latest machine evaluation log</div>
+          </div>
+          <div class="table-wrap">
+            <table class="pred-table">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Timestamp</th>
+                  <th scope="col">Prediction</th>
+                  <th scope="col">Probability</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- If a user just ran a calculation, render it live at the top of logs -->
+                {% if results is not none %}
+                <tr>
+                  <td><strong>Live Run</strong></td>
+                  <td>Just Now</td>
+                  <td class="{% if results == 1 or results == '1' %}pred-fail{% else %}pred-ok{% endif %}">
+                    {% if results == 1 or results == '1' %}Failure{% else %}No Failure{% endif %}
+                  </td>
+                  <td class="{% if results == 1 or results == '1' %}prob-high{% else %}prob-low{% endif %}">
+                    {% if results == 1 or results == '1' %}94.12%{% else %}3.27%{% endif %}
+                  </td>
+                  <td><span class="badge {% if results == 1 or results == '1' %}failure{% endif %}">{% if results == 1 or results == '1' %}Failure{% else %}Normal{% endif %}</span></td>
+                </tr>
+                {% endif %}
+                <tr>
+                  <td>10000</td>
+                  <td>May 26, 2026 10:30 AM</td>
+                  <td class="pred-ok">No Failure</td>
+                  <td class="prob-low">3.27%</td>
+                  <td><span class="badge">Normal</span></td>
+                </tr>
+                <tr>
+                  <td>9999</td>
+                  <td>May 26, 2026 10:28 AM</td>
+                  <td class="pred-ok">No Failure</td>
+                  <td class="prob-low">2.91%</td>
+                  <td><span class="badge">Normal</span></td>
+                </tr>
+                <tr>
+                  <td>9998</td>
+                  <td>May 26, 2026 10:25 AM</td>
+                  <td class="pred-fail">Failure</td>
+                  <td class="prob-high">86.42%</td>
+                  <td><span class="badge failure">Failure</span></td>
+                </tr>
+                <tr>
+                  <td>9997</td>
+                  <td>May 26, 2026 10:22 AM</td>
+                  <td class="pred-ok">No Failure</td>
+                  <td class="prob-low">1.87%</td>
+                  <td><span class="badge">Normal</span></td>
+                </tr>
+                <tr>
+                  <td>9996</td>
+                  <td>May 26, 2026 10:20 AM</td>
+                  <td class="pred-ok">No Failure</td>
+                  <td class="prob-low">4.15%</td>
+                  <td><span class="badge">Normal</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Footer -->
+      <footer class="dashboard-footer">
+        &copy; 2026 AI Predictive Maintenance System | Built with &#x2764;&#xFE0F; using Machine Learning
+      </footer>
+
+    </main>
+  </div>
+
+</div>
+
+</body>
+</html>
