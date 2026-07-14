@@ -12,4 +12,4 @@ python-dotenv
 joblib
 pickle
 Flask
--e .
+# -e .

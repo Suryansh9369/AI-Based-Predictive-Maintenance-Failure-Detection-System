@@ -1,0 +1,11 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      - pip install -r requirements.txt
+  build:
+    commands:
+      - echo "No heavy build, just preparing files"
+artifacts:
+  files:
+    - '**/*'
