@@ -1,15 +1,7 @@
 pandas
 numpy
-matplotlib
-seaborn
 scikit-learn
 xgboost
-streamlit
-jupyter
-notebook
-ipykernel
-python-dotenv
 joblib
-pickle
 Flask
-# -e .
+python-dotenv
