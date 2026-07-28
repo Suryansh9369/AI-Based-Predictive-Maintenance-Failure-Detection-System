@@ -42,8 +42,17 @@ The project covers the complete Machine Learning lifecycle including data ingest
 
 ## 📸 Application Preview
 
-![alt text](image.png)
-![alt text](image-1.png)
+<p align="center">
+<img src="images/home.png" width="850">
+</p>
+
+<p align="center">
+<img src="images/failure_info.png" width="850">
+</p>
+
+<p align="center">
+<img src="images/failure.png" width="850">
+</p>
 
 ---
 

@@ -121,7 +121,7 @@
           <span class="live-dot"></span>
           <span>Live</span>
         </div>
-        <span class="header-ts">May 26, 2026 10:30:45 AM</span>
+        <span class="header-ts" id="current-time"></span>
         <div class="avatar">U</div>
       </div>
     </header>
@@ -555,6 +555,31 @@
   </div>
 
 </div>
+<script>
+function updateClock() {
+    const now = new Date();
 
+    const date = now.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+    });
+
+    const time = now.toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    });
+
+    document.getElementById("current-time").textContent =
+        `${date} | ${time}`;
+}
+
+// Display immediately
+updateClock();
+
+// Update every second
+setInterval(updateClock, 1000);
+</script>
 </body>
 </html>
