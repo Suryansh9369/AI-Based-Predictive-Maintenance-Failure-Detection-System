@@ -239,6 +239,6 @@ Portfolio:
 https://suryanshvishwakarmaportfolio.netlify.app/
 
 LinkedIn:
-(Add your LinkedIn URL)
+www.linkedin.com/in/suryansh-vishwakarma/
 
 ---
